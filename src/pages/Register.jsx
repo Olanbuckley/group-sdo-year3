@@ -45,8 +45,8 @@ export default function Register() {
 
       // 2️⃣ Create doctor in /doctors — NO accountId, backend does NOT support it
       const docRes = await addDoctor({
-        firstName: f.firstName,
-        lastName: f.lastName,
+        first_name: f.firstName,
+        last_name: f.lastName,
         address: f.address,
         email: f.email,
         phone: f.phone,

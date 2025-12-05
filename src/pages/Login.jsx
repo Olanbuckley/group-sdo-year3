@@ -34,11 +34,12 @@ export default function Login() {
         return
       }
 
-      const doctorId = doctor.id || doctor._id
-      if (!doctorId) {
+      const doctorLastName = doctor.lastName
+      if (!doctorLastName) {
         setError("Doctor profile found, but no ID returned from backend.")
         return
       }
+    const doctorId = "dr" + doctorLastName.toUpperCase()
 
       // 4️⃣ Save doctorId for all protected pages
       localStorage.setItem("doctorId", doctorId)
