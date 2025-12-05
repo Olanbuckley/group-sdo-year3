@@ -14,7 +14,7 @@ export default function Dashboard() {
   useEffect(() => {
     async function load() {
       try {
-        console.log(doctorId)
+        //console.log(doctorId)
         const res = await getPatientsByDoctor(doctorId)
         const list = Array.isArray(res.data) ? res.data : []
 

@@ -4,7 +4,7 @@ import { loginAccount, getAllDoctors } from "../api/api.js"
 
 async function getDoctorId(theEmail){
   const docRes = await getAllDoctors()
-      console.log(docRes)
+      //console.log(docRes)
 
       const docData = docRes.data
 
@@ -12,7 +12,7 @@ async function getDoctorId(theEmail){
       for(const key in docData){
         const doctor = docData[key]
         if(doctor && doctor.email === theEmail)
-           console.log(key)
+           //console.log(key)
           return key 
       }
       return null
@@ -51,7 +51,7 @@ export default function Login() {
         setError("Login successful, but no doctor profile exists for this email.")
         return
       }
-      console.log(doctorId)
+      //console.log(doctorId)
 
       // 4️⃣ Save doctorId for all protected pages
       localStorage.setItem("doctorId", doctorId)
