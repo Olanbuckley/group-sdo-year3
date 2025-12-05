@@ -2,6 +2,19 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { loginAccount, getAllDoctors } from "../api/api.js"
 
+async function getDoctorId(email){
+  const docRes = await getAllDoctors()
+      console.log(docRes)
+
+      const doctorKeys = Object.keys(docRes)
+      
+      for(const key of doctorKeys){
+        const doctor = doctorKeys[key]
+        if(doctor.email === email)
+          return key 
+      }
+      return null
+}
 export default function Login() {
   const nav = useNavigate()
   const [email, setEmail] = useState("")
@@ -23,23 +36,22 @@ export default function Login() {
       // So we must look up the doctor by email.
 
       // 2️⃣ Get doctors list
-      const docRes = await getAllDoctors()
-      const doctors = Array.isArray(docRes.data) ? docRes.data : []
+      
+      
+      //const doctors = Array.isArray(docRes.data) ? docRes.data : []
+
+      const doctorId = getDoctorId()
 
       // 3️⃣ Find doctor profile by matching email
-      const doctor = doctors.find(d => d.email?.toLowerCase() === email.toLowerCase())
+      //const doctor = doctors.find(d => d.email?.toLowerCase() === email.toLowerCase())
 
-      if (!doctor) {
+      if (!doctorId) {
         setError("Login successful, but no doctor profile exists for this email.")
         return
       }
 
-      const doctorLastName = doctor.lastName
-      if (!doctorLastName) {
-        setError("Doctor profile found, but no ID returned from backend.")
-        return
-      }
-    const doctorId = "dr" + doctorLastName.toUpperCase()
+
+    
 
       // 4️⃣ Save doctorId for all protected pages
       localStorage.setItem("doctorId", doctorId)
