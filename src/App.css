@@ -1,0 +1,9 @@
+/* I only keep styles here that I actually use in my app.
+   Most of my styling is done with Tailwind classes in JSX. */
+
+/* This keeps the app centered if I ever use the #root container styles */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
