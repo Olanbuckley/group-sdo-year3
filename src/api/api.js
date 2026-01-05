@@ -4,6 +4,12 @@ const API = axios.create({
   baseURL: "https://nms-backend-kr6f.onrender.com"
 });
 
+const newsAPI = axios.create({
+  baseURL: "https://flask-ai-firebase.onrender.com"
+})
+
+
+
 export const getAllDoctors = () => API.get("/doctors");
 export const getDoctorById = (id) => API.get(`/doctors/${id}`);
 export const addDoctor = (data) => API.post("/doctors", data);
@@ -27,4 +33,4 @@ export const addRiskScore = (patientId, data) =>
 export const getLatestRiskScore = (patientId) =>
   API.get(`/patients/${patientId}/riskScores/latest`);
 
-export const getNews = () => API.get("/news");
+export const getNews = () => newsAPI.get("/doctornews");
